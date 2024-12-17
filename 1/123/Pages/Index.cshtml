@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page"; // Установка заголовка страницы через ViewData
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1> <!-- Приветственное сообщение -->
+</div>
+
+<div class="text-center">
+    <a asp-page="Floors/Index">Этажи</a> <!-- Ссылка на страницу "Этажи" -->
+</div>
+
+<div class="text-center">
+    <a asp-page="Cabinets/Index">Кабинеты</a> <!-- Ссылка на страницу "Кабинеты" -->
+</div>
+
+<div class="text-center">
+    <a asp-page="Users/Index">Пользователи</a> <!-- Ссылка на страницу "Пользователи" -->
+</div>

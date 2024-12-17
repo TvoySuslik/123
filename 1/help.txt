@@ -1,29 +1,2 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace CRUDtest2.Models
-{
-    public class Cabinet
-    {
-        [Key]
-        public int Id { get; set; }
-
-        [Required]
-        public string Number { get; set; }
-
-        public int FloorId { get; set; }
-
-        [ForeignKey("FloorId")]
-        public Floor Floor { get; set; }
-    }
-
-}
-
-
 Add-Migration Initial
 Update-Database
-
-
-<div class="text-center">
-    <a asp-page="Users/Index">Пользователи</a>
-</div>

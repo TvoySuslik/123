@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Указание стандарта HTML5 -->
+    <meta charset="utf-8" /> <!-- Устанавливает кодировку символов UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Указывает, что страница адаптируется к ширине устройства -->
+    <title>@ViewData["Title"] - CRUDtest2</title> <!-- Устанавливает заголовок страницы с использованием ViewData -->
+    <!-- Подключение CSS Bootstrap -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Подключение пользовательских стилей -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> <!-- Добавляет версию файла для кэширования -->
+    <link rel="stylesheet" href="~/CRUDtest2.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <!-- Навигационная панель -->
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <!-- Ссылка на главную страницу -->
+                <a class="navbar-brand" asp-area="" asp-page="/Index">CRUDtest2</a>
+                <!-- Кнопка для мобильного меню -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span> <!-- Иконка переключателя меню -->
+                </button>
+                <!-- Меню навигации -->
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <!-- Пункт меню: Ссылка на главную страницу -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Основное содержимое страницы -->
+        <main role="main" class="pb-3">
+            @RenderBody() <!-- Вставляет содержимое текущей Razor-страницы -->
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <!-- Подвал с копирайтом и ссылкой на политику конфиденциальности -->
+            &copy; 2024 - CRUDtest2 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Подключение библиотек JavaScript -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script> <!-- Подключение библиотеки jQuery -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> <!-- Подключение Bootstrap JavaScript -->
+    <script src="~/js/site.js" asp-append-version="true"></script> <!-- Подключение пользовательских скриптов -->
+    <!-- Дополнительный раздел для скриптов -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@page
+@model CRUDtest2.Pages.Cabinets.EditModel
+
+@{
+    ViewData["Title"] = "Edit"; // Устанавливает заголовок страницы как "Edit"
+}
+
+<h1>Edit</h1> <!-- Заголовок страницы -->
+
+<h4>Cabinet</h4> <!-- Подзаголовок, указывающий, что форма редактирования относится к кабинету -->
+<hr /> <!-- Горизонтальная линия для разделения -->
+
+<div class="row">
+    <div class="col-md-4">
+        <!-- Форма редактирования кабинета -->
+        <form method="post">
+            <!-- Сводка ошибок валидации для модели -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Скрытое поле для передачи ID кабинета -->
+            <input type="hidden" asp-for="Cabinet.Id" />
+
+            <!-- Поле для редактирования номера кабинета -->
+            <div class="form-group">
+                <span class="text-danger">*</span> <!-- Обозначение обязательного поля -->
+                <label asp-for="Cabinet.Number" class="control-label"></label> <!-- Метка для поля "Number" -->
+                <input asp-for="Cabinet.Number" class="form-control" /> <!-- Поле ввода для номера кабинета -->
+                <span asp-validation-for="Cabinet.Number" class="text-danger"></span> <!-- Ошибка валидации для поля "Number" -->
+            </div>
+
+            <!-- Поле для выбора этажа -->
+            <div class="form-group">
+                <label asp-for="Cabinet.FloorId" class="control-label"></label> <!-- Метка для поля "FloorId" -->
+                <select asp-for="Cabinet.FloorId" class="form-control" asp-items="ViewBag.FloorId"></select> <!-- Выпадающий список для выбора этажа -->
+                <span asp-validation-for="Cabinet.FloorId" class="text-danger"></span> <!-- Ошибка валидации для поля "FloorId" -->
+            </div>
+
+            <!-- Кнопка для сохранения изменений -->
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" /> <!-- Кнопка для сохранения изменений в кабинете -->
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Ссылка для возврата к списку кабинетов -->
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <!-- Подключение скриптов для валидации формы -->
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

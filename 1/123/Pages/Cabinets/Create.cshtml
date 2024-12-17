@@ -1,0 +1,52 @@
+﻿@page
+@model CRUDtest2.Pages.Cabinets.CreateModel
+
+@{
+    ViewData["Title"] = "Create"; // Устанавливает заголовок страницы для отображения
+}
+
+<h1>Create</h1> <!-- Заголовок страницы -->
+
+<h4>Cabinet</h4> <!-- Подзаголовок, указывающий, что форма относится к созданию кабинета -->
+<hr /> <!-- Горизонтальная линия для визуального разделения -->
+
+<div class="row">
+    <div class="col-md-4">
+        <!-- Форма для создания нового кабинета -->
+        <form method="post">
+            <!-- Отображение ошибок валидации, если таковые имеются -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Поле для ввода номера кабинета -->
+            <div class="form-group">
+                <span class="text-danger">*</span> <!-- Обозначение обязательного поля -->
+                <label asp-for="Cabinet.Number" class="control-label"></label> <!-- Метка для поля "Number" -->
+                <input asp-for="Cabinet.Number" class="form-control" /> <!-- Текстовое поле ввода для номера -->
+                <span asp-validation-for="Cabinet.Number" class="text-danger"></span> <!-- Ошибка валидации для поля "Number" -->
+            </div>
+
+            <!-- Поле для выбора этажа -->
+            <div class="form-group">
+                <label asp-for="Cabinet.FloorId" class="control-label"></label> <!-- Метка для поля "FloorId" -->
+                <select asp-for="Cabinet.FloorId" class="form-control" asp-items="ViewBag.FloorId"></select> <!-- Выпадающий список с вариантами -->
+            </div>
+
+            <!-- Кнопка для отправки формы -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" /> <!-- Кнопка отправки формы -->
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <!-- Ссылка для возвращения к списку кабинетов -->
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <!-- Подключение частичного представления для скриптов валидации -->
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

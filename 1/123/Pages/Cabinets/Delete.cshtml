@@ -1,0 +1,41 @@
+﻿@page
+@model CRUDtest2.Pages.Cabinets.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete"; // Устанавливает заголовок страницы "Delete"
+}
+
+<h1>Delete</h1> <!-- Заголовок страницы -->
+
+<h3>Are you sure you want to delete this?</h3> <!-- Вопрос для подтверждения удаления -->
+
+<div>
+    <h4>Cabinet</h4> <!-- Подзаголовок, указывающий, что отображается информация о кабинете -->
+    <hr /> <!-- Горизонтальная линия для визуального разделения -->
+    <!-- Отображение данных о кабинете -->
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cabinet.Number) <!-- Отображение названия поля "Number" -->
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cabinet.Number) <!-- Отображение значения номера кабинета -->
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cabinet.Floor) <!-- Отображение названия поля "Floor" -->
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cabinet.Floor.Name) <!-- Отображение имени этажа, на котором находится кабинет -->
+        </dd>
+    </dl>
+
+    <!-- Форма для подтверждения удаления -->
+    <form method="post">
+        <!-- Скрытое поле для передачи идентификатора кабинета -->
+        <input type="hidden" asp-for="Cabinet.Id" />
+        <!-- Кнопка для отправки формы и подтверждения удаления -->
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <!-- Ссылка для возврата на список кабинетов -->
+        | <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

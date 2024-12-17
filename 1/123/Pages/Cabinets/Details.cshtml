@@ -1,0 +1,35 @@
+﻿@page
+@model CRUDtest2.Pages.Cabinets.DetailsModel
+
+@{
+    ViewData["Title"] = "Details"; // Устанавливает заголовок страницы как "Details"
+}
+
+<h1>Details</h1> <!-- Заголовок страницы -->
+
+<div>
+    <h4>Cabinet</h4> <!-- Подзаголовок, указывающий, что отображаются детали кабинета -->
+    <hr /> <!-- Горизонтальная линия для разделения -->
+    <!-- Отображение данных о кабинете -->
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cabinet.Number) <!-- Отображение названия поля "Number" -->
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cabinet.Number) <!-- Отображение значения номера кабинета -->
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cabinet.Floor) <!-- Отображение названия поля "Floor" -->
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cabinet.Floor.Name) <!-- Отображение имени этажа, на котором находится кабинет -->
+        </dd>
+    </dl>
+</div>
+
+<!-- Ссылки для редактирования или возврата к списку -->
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Cabinet.Id">Edit</a> | <!-- Ссылка для редактирования кабинета -->
+    <a asp-page="./Index">Back to List</a> <!-- Ссылка для возврата к списку кабинетов -->
+</div>

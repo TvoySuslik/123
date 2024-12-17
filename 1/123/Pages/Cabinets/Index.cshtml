@@ -1,0 +1,50 @@
+﻿@page
+@model CRUDtest2.Pages.Cabinets.IndexModel
+
+@{
+    ViewData["Title"] = "Index"; // Устанавливает заголовок страницы как "Index"
+}
+
+<h1>Index</h1> <!-- Заголовок страницы -->
+
+<p>
+    <!-- Ссылка на создание нового кабинета -->
+    <a asp-page="Create">Create New</a>
+</p>
+
+<!-- Таблица с отображением списка кабинетов -->
+<table class="table">
+    <thead>
+        <tr>
+            <!-- Заголовок для колонки "Number" -->
+            <th>
+                @Html.DisplayNameFor(model => model.Cabinet[0].Number) <!-- Отображение названия поля "Number" -->
+            </th>
+            <!-- Заголовок для колонки "Floor" -->
+            <th>
+                @Html.DisplayNameFor(model => model.Cabinet[0].Floor) <!-- Отображение названия поля "Floor" -->
+            </th>
+            <th></th> <!-- Пустая колонка для действий (редактировать, детали, удалить) -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cabinet)
+        {
+            <!-- Перебор всех кабинетов в модели -->
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number) <!-- Отображение номера кабинета -->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Floor.Name) <!-- Отображение имени этажа, на котором находится кабинет -->
+                </td>
+                <td>
+                    <!-- Ссылки для редактирования, просмотра деталей и удаления -->
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> | <!-- Ссылка для редактирования кабинета -->
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> | <!-- Ссылка для просмотра деталей кабинета -->
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> <!-- Ссылка для удаления кабинета -->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
